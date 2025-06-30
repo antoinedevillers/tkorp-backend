@@ -1,0 +1,81 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AnimalEntity {
+  breed: String
+  color: String
+  dateOfBirth: DateTime
+  id: Int!
+  name: String!
+  owner: PersonEntity!
+  ownerId: Int!
+  species: String!
+  weight: Float
+}
+
+input CreateAnimalInput {
+  breed: String
+  color: String!
+  dateOfBirth: String
+  name: String!
+  ownerId: Int!
+  species: String!
+}
+
+input CreatePersonInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  phoneNumber: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createAnimal(createAnimalInput: CreateAnimalInput!): AnimalEntity!
+  createPerson(createPersonInput: CreatePersonInput!): PersonEntity!
+  removeAnimal(id: Int!): AnimalEntity!
+  removePerson(id: Int!): PersonEntity!
+  updateAnimal(updateAnimalInput: UpdateAnimalInput!): AnimalEntity!
+  updatePerson(updatePersonInput: UpdatePersonInput!): PersonEntity!
+}
+
+type PersonEntity {
+  animals: [AnimalEntity!]!
+  email: String!
+  firstName: String!
+  id: Int!
+  lastName: String!
+  phoneNumber: String
+}
+
+type Query {
+  animal(id: Int!): AnimalEntity!
+  animals(limit: Int, page: Int): [AnimalEntity!]!
+  animalsWithoutPagination: [AnimalEntity!]!
+  person(id: Int!): PersonEntity!
+  persons(limit: Int, page: Int): [PersonEntity!]!
+  personsWithoutPagination: [PersonEntity!]!
+}
+
+input UpdateAnimalInput {
+  breed: String
+  color: String
+  dateOfBirth: String
+  id: Int!
+  name: String
+  ownerId: Int
+  species: String
+}
+
+input UpdatePersonInput {
+  email: String
+  firstName: String
+  id: Int!
+  lastName: String
+  phoneNumber: String
+}
