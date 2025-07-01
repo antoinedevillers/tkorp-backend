@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { PersonModule } from './person/person.module';
 import { AnimalModule } from './animal/animal.module';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -34,9 +32,5 @@ import { join } from 'path';
       sortSchema: true, // Trie le schéma par ordre alphabétique
     }),
   ],
-  // Déclaration des contrôleurs (REST)
-  controllers: [AppController],
-  // Déclaration des providers (services injectables)
-  providers: [AppService],
 })
 export class AppModule {}
